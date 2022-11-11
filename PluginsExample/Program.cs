@@ -34,10 +34,13 @@ namespace PluginsExample
           /// <param name="pluginPath"></param>
           private static void RunMethodPlugin(string pluginPath)
           {
+               //Загружаем сборку
                Assembly asm = Assembly.LoadFrom(pluginPath);
+               //получаем класс ClassPlugin
                Type? type = asm.GetType("ClassPlugin");
                if (type != null)
                {
+                    //получаем метод Run
                     MethodInfo? run = type.GetMethod("Run", BindingFlags.Public | BindingFlags.Static);
                     if (run != null)
                     {
